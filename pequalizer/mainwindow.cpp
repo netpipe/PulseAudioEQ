@@ -172,6 +172,7 @@ void MainWindow::on_s20khz_sliderMoved(int position)
 
 void MainWindow::on_applybtn_clicked()
 {
+    //save QDir::homePath()+"/.config/pulse/equalizerrc"
     QProcess::execute ("pulseaudio-equalizer interface.applysettings");
 }
 
