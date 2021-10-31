@@ -428,6 +428,13 @@
       </layout>
      </widget>
     </item>
+    <item row="2" column="5">
+     <widget class="QPushButton" name="applybtn">
+      <property name="text">
+       <string>apply</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
