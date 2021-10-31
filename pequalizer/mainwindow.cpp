@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QProcess>
+#include <QDirIterator>
 
 //PA_LADSPA_PLUGIN='mbeq_1197'
 //PA_LADSPA_PLUGIN_NAME='Multiband EQ'
@@ -22,6 +24,44 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+//    QDirIterator it("./Resource/themes/", QStringList() << "*.qss", QDir::Files, QDirIterator::Subdirectories);
+//    while (it.hasNext()){
+//      //  QFileInfo fileInfo(f.fileName());
+//        ui->cmbTheme->addItem(it.next().toLatin1());
+//    }
+
+
+//    QFile MyFile("themes.txt");
+//    if(MyFile.exists()){
+//        MyFile.open(QIODevice::ReadWrite);
+//        QTextStream in (&MyFile);
+//        QString line;
+//        QStringList list;
+//         //   QList<QString> nums;
+//        QStringList nums;
+//        QRegExp rx("[:]");
+//        line = in.readLine();
+//  QString stylesheet;
+//        if (line.contains(":")) {
+//            list = line.split(rx);
+//                qDebug() << "theme" <<  list.at(1).toLatin1();
+//                stylesheet =  list.at(1).toLatin1();
+//          loadStyleSheet( list.at(1).toLatin1());
+
+//                MyFile.close();
+//        }
+
+//      fileName=stylesheet;
+
+
+        QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
+        while (it.hasNext()){
+          //  QFileInfo fileInfo(f.fileName());
+            ui->preset->addItem(it.next().toLatin1());
+        }
+
+
 }
 
 MainWindow::~MainWindow()
@@ -52,12 +92,6 @@ void MainWindow::on_pushButton_clicked()
             //                file.write("\n");
                file2.close();
         }
-}
-
-void MainWindow::on_applybtn_clicked()
-{
-//    pulseaudio-equalizer interface.applysettings
-
 }
 
 void MainWindow::on_s50hz_sliderMoved(int position)
@@ -133,5 +167,29 @@ void MainWindow::on_s10khz_sliderMoved(int position)
 
 void MainWindow::on_s20khz_sliderMoved(int position)
 {
+
+}
+
+void MainWindow::on_applybtn_clicked()
+{
+    QProcess::execute ("pulseaudio-equalizer interface.applysettings");
+}
+
+
+void MainWindow::on_enableBTN_clicked()
+{
+    QProcess::execute ("pulseaudio-equalizer enable");
+}
+
+
+void MainWindow::on_disableBTN_clicked()
+{
+    QProcess::execute ("pulseaudio-equalizer disable");
+
+}
+
+void MainWindow::on_toggleBTN_clicked()
+{
+    QProcess::execute ("pulseaudio-equalizer toggle");
 
 }

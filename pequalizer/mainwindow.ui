@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="4">
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="preset">
       <item>
        <property name="text">
         <string>default</string>

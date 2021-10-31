@@ -52,6 +52,12 @@ private slots:
 
     void on_s20khz_sliderMoved(int position);
 
+    void on_enableBTN_clicked();
+
+    void on_disableBTN_clicked();
+
+    void on_toggleBTN_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
