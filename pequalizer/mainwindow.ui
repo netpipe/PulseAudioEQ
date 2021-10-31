@@ -388,7 +388,7 @@
         </widget>
        </item>
        <item row="2" column="11">
-        <widget class="QLabel" name="l25khz_2">
+        <widget class="QLabel" name="l35khz">
          <property name="text">
           <string>4 db</string>
          </property>

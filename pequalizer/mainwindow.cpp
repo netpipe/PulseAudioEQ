@@ -101,72 +101,84 @@ void MainWindow::on_s50hz_sliderMoved(int position)
 
 void MainWindow::on_s100hz_sliderMoved(int position)
 {
-    ui->l50hz->setText(QString::number(position)+" db");
+    ui->l100hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s156hz_sliderMoved(int position)
 {
-
+    ui->l156hz->setText(QString::number(position)+" db");
 }
 
 void MainWindow::on_s220hz_sliderMoved(int position)
 {
+    ui->l220hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s311hz_sliderMoved(int position)
 {
+    ui->l311hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s440hz_sliderMoved(int position)
 {
+    ui->l440hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s622hz_sliderMoved(int position)
 {
+    ui->l622hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s880hz_sliderMoved(int position)
 {
+    ui->l880hz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s125khz_sliderMoved(int position)
 {
+    ui->l125khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s175khz_sliderMoved(int position)
 {
+    ui->l175khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s25khz_sliderMoved(int position)
 {
+    ui->l25khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s35khz_sliderMoved(int position)
 {
+    ui->l35khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s5khz_sliderMoved(int position)
 {
+    ui->l5khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s10khz_sliderMoved(int position)
 {
+    ui->l10khz->setText(QString::number(position)+" db");
 
 }
 
 void MainWindow::on_s20khz_sliderMoved(int position)
 {
+    ui->l20khz->setText(QString::number(position)+" db");
 
 }
 
