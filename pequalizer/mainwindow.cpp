@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QProcess>
 #include <QDirIterator>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,7 +34,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-    WritePresetFile(ui->PresetName->toPlainText().toLatin1());
+    WritePresetFile(ui->PresetName->toPlainText().toLatin1()+".preset");
 }
 
 void MainWindow::WritePresetFile(QString fileName)
@@ -54,21 +55,21 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << pream_str << endl;
     stream << presetName_str << endl;
     stream << "15" << endl;
-    stream << ui->s50hz->value() << endl;
-    stream << ui->s100hz->value() << endl;
-    stream << ui->s156hz->value() << endl;
-    stream << ui->s220hz->value() << endl;
-    stream << ui->s311hz->value() << endl;
-    stream << ui->s440hz->value() << endl;
-    stream << ui->s622hz->value() << endl;
-    stream << ui->s880hz->value() << endl;
-    stream << ui->s125khz->value() << endl;
-    stream << ui->s175khz->value() << endl;
-    stream << ui->s25khz->value() << endl;
-    stream << ui->s35khz->value() << endl;
-    stream << ui->s5khz->value() << endl;
-    stream << ui->s10khz->value() << endl;
-    stream << ui->s20khz->value() << endl;
+    stream << QString::number( (float) ui->s50hz->value() / 10) << endl;
+    stream << ui->s100hz->value()/ 10 << endl;
+    stream << ui->s156hz->value()/ 10 << endl;
+    stream << ui->s220hz->value()/ 10 << endl;
+    stream << ui->s311hz->value()/ 10 << endl;
+    stream << ui->s440hz->value()/ 10 << endl;
+    stream << ui->s622hz->value()/ 10 << endl;
+    stream << ui->s880hz->value() / 10<< endl;
+    stream << ui->s125khz->value()/ 10 << endl;
+    stream << ui->s175khz->value()/ 10 << endl;
+    stream << ui->s25khz->value()/ 10 << endl;
+    stream << ui->s35khz->value()/ 10 << endl;
+    stream << ui->s5khz->value() / 10<< endl;
+    stream << ui->s10khz->value()/ 10 << endl;
+    stream << ui->s20khz->value()/ 10 << endl;
     stream << 50 << endl;
     stream << 100 << endl;
     stream << 156 << endl;
@@ -85,6 +86,7 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << 10000 << endl;
     stream << 20000 << endl;
     file.close();
+    qDebug() << fileName.toLatin1() << "wrote";
 }
 
 void MainWindow::on_s50hz_sliderMoved(int position)
@@ -219,18 +221,18 @@ void MainWindow::on_applybtn_clicked()
 void MainWindow::on_enableBTN_clicked()
 {
  //   QProcess::execute ("pulseaudio-equalizer enable");
-    QProcess::execute("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "enable");
+    QProcess::execute("bash", QStringList() << "pulseaudio-equalizer" << "enable");
 }
 
 
 void MainWindow::on_disableBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "disable");
+    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer" << "disable");
 }
 
 void MainWindow::on_toggleBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "toggle");
+    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer" << "toggle");
 
 }
 
