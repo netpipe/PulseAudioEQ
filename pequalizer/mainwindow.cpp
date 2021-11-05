@@ -52,12 +52,18 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << "mbeq_1197" << endl;
     stream << "mbeq" << endl;
     stream << "Multiband EQ" << endl;
+
+
     stream << pream_str << endl;
     stream << presetName_str << endl;
+    stream << "1" << endl;
+        stream << "1" << endl;
+        stream << "-30" << endl;
+            stream << "30" << endl;
     stream << "15" << endl;
-    stream <<(float) ui->s50hz->value() / 10 << endl;
-    stream << (float)ui->s100hz->value()/ 10 << endl;
-    stream << (float)ui->s156hz->value()/ 10 << endl;
+    stream <<  (float)ui->s50hz->value() / 10 << endl;
+    stream <<  (float)ui->s100hz->value()/ 10 << endl;
+    stream <<  (float)ui->s156hz->value()/ 10 << endl;
     stream <<  (float)ui->s220hz->value()/ 10 << endl;
     stream <<  (float)ui->s311hz->value()/ 10 << endl;
     stream <<  (float)ui->s440hz->value()/ 10 << endl;
@@ -66,7 +72,7 @@ void MainWindow::WritePresetFile(QString fileName)
     stream <<  (float)ui->s125khz->value()/ 10 << endl;
     stream <<  (float)ui->s175khz->value()/ 10 << endl;
     stream <<  (float)ui->s25khz->value()/ 10 << endl;
-    stream << (float)ui->s35khz->value()/ 10 << endl;
+    stream <<  (float)ui->s35khz->value()/ 10 << endl;
     stream <<  (float)ui->s5khz->value() / 10<< endl;
     stream <<  (float)ui->s10khz->value()/ 10 << endl;
     stream <<  (float)ui->s20khz->value()/ 10 << endl;
