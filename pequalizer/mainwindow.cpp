@@ -56,8 +56,8 @@ void MainWindow::WritePresetFile(QString fileName)
 
     stream << pream_str.toFloat() << endl;
     stream << presetName_str << endl;
-    stream << "1" << endl;
-        stream << "1" << endl;
+    stream << "1" << endl; //equalizer status
+        stream << "1" << endl; //persistance
         stream << "-30" << endl;
             stream << "30" << endl;
     stream << "15" << endl;
@@ -227,18 +227,18 @@ void MainWindow::on_applybtn_clicked()
 void MainWindow::on_enableBTN_clicked()
 {
  //   QProcess::execute ("pulseaudio-equalizer enable");
-    QProcess::execute("bash", QStringList() << "pulseaudio-equalizer" << "enable");
+    QProcess::execute("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "enable");
 }
 
 
 void MainWindow::on_disableBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer " << "disable");
+    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "disable");
 }
 
 void MainWindow::on_toggleBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << " toggle");
+    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "toggle");
 
 }
 
