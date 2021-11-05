@@ -54,7 +54,7 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << "Multiband EQ" << endl;
 
 
-    stream << pream_str << endl;
+    stream << pream_str.toFloat() << endl;
     stream << presetName_str << endl;
     stream << "1" << endl;
         stream << "1" << endl;
