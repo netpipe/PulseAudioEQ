@@ -7,18 +7,6 @@
 #include <QProcess>
 #include <QDirIterator>
 
-//PA_LADSPA_PLUGIN='mbeq_1197'
-//PA_LADSPA_PLUGIN_NAME='Multiband EQ'
-//PA_LADSPA_LABEL='mbeq'
-//PA_NUM_LADSPA_INPUTS='15'
-//PA_LADSPA_CONTROLS='0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'
-//PA_LADSPA_INPUTS='50,100,156,220,311,440,622,880,1250,1750,2500,3500,5000,10000,20000'
-//PA_CONTROL_MIN='-30'
-//PA_CONTROL_MAX='30'
-//PA_PREAMP='1.0'
-//PA_CURRENT_PRESET=''
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -230,7 +218,7 @@ void MainWindow::on_applybtn_clicked()
 
 void MainWindow::on_enableBTN_clicked()
 {
-    QProcess::execute ("pulseaudio-equalizer enable");
+ //   QProcess::execute ("pulseaudio-equalizer enable");
     QProcess::execute("bash", QStringList() << "pulseaudio-equalizer enable");
 }
 
