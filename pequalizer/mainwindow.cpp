@@ -55,21 +55,21 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << pream_str << endl;
     stream << presetName_str << endl;
     stream << "15" << endl;
-    stream << QString::number( (float) ui->s50hz->value() / 10) << endl;
-    stream << QString::number( (float)ui->s100hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s156hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s220hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s311hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s440hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s622hz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s880hz->value() / 10)<< endl;
-    stream << QString::number( (float)ui->s125khz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s175khz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s25khz->value()/ 10 )<< endl;
-    stream << QString::number( (float)ui->s35khz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s5khz->value() / 10)<< endl;
-    stream << QString::number( (float)ui->s10khz->value()/ 10) << endl;
-    stream << QString::number( (float)ui->s20khz->value()/ 10) << endl;
+    stream << QString( ui->s50hz->value() / 10).toFloat() << endl;
+    stream << QString(ui->s100hz->value()/ 10).toFloat() << endl;
+    stream << QString(ui->s156hz->value()/ 10).toFloat() << endl;
+//    stream <<  (float)ui->s220hz->value()/ 10 << endl;
+//    stream <<  (float)ui->s311hz->value()/ 10 << endl;
+//    stream <<  (float)ui->s440hz->value()/ 10 << endl;
+//    stream <<  (float)ui->s622hz->value()/ 10 << endl;
+//    stream <<  (float)ui->s880hz->value() / 10<< endl;
+//    stream <<  (float)ui->s125khz->value()/ 10 << endl;
+//    stream <<  (float)ui->s175khz->value()/ 10 << endl;
+//    stream <<  (float)ui->s25khz->value()/ 10 << endl;
+//    stream << (float)ui->s35khz->value()/ 10 << endl;
+//    stream <<  (float)ui->s5khz->value() / 10<< endl;
+//    stream <<  (float)ui->s10khz->value()/ 10 << endl;
+//    stream <<  (float)ui->s20khz->value()/ 10 << endl;
     stream << 50 << endl;
     stream << 100 << endl;
     stream << 156 << endl;
@@ -276,49 +276,49 @@ void MainWindow::on_preset_currentIndexChanged(int index)
             ui->PresetName->setPlainText(strList[4]);
 
 
-            double kValue = strList[6].toDouble();
+            double kValue = strList[6].toFloat()*10;
             ui->s50hz->setValue((int)kValue); on_s50hz_sliderMoved((int)kValue);
 
-            kValue = strList[7].toDouble();
+            kValue = strList[7].toFloat()*10;
             ui->s100hz->setValue((int)kValue); on_s100hz_sliderMoved((int)kValue);
 
-            kValue = strList[8].toDouble();
+            kValue = strList[8].toFloat()*10;
             ui->s156hz->setValue((int)kValue); on_s156hz_sliderMoved((int)kValue);
 
-            kValue = strList[9].toDouble();
+            kValue = strList[9].toFloat()*10;
             ui->s220hz->setValue((int)kValue); on_s220hz_sliderMoved((int)kValue);
 
-            kValue = strList[10].toDouble();
+            kValue = strList[10].toFloat()*10;
             ui->s311hz->setValue((int)kValue); on_s311hz_sliderMoved((int)kValue);
 
-            kValue = strList[11].toDouble();
+            kValue = strList[11].toFloat()*10;
             ui->s440hz->setValue((int)kValue); on_s440hz_sliderMoved((int)kValue);
 
-            kValue = strList[12].toDouble();
+            kValue = strList[12].toFloat()*10;
             ui->s622hz->setValue((int)kValue); on_s622hz_sliderMoved((int)kValue);
 
-            kValue = strList[13].toDouble();
+            kValue = strList[13].toFloat()*10;
             ui->s880hz->setValue((int)kValue); on_s880hz_sliderMoved((int)kValue);
 
-            kValue = strList[14].toDouble();
+            kValue = strList[14].toFloat()*10;
             ui->s125khz->setValue((int)kValue); on_s125khz_sliderMoved((int)kValue);
 
-            kValue = strList[15].toDouble();
+            kValue = strList[15].toFloat()*10;
             ui->s175khz->setValue((int)kValue); on_s175khz_sliderMoved((int)kValue);
 
-            kValue = strList[16].toDouble();
+            kValue = strList[16].toFloat()*10;
             ui->s25khz->setValue((int)kValue); on_s25khz_sliderMoved((int)kValue);
 
-            kValue = strList[17].toDouble();
+            kValue = strList[17].toFloat()*10;
             ui->s35khz->setValue((int)kValue); on_s35khz_sliderMoved((int)kValue);
 
-            kValue = strList[18].toDouble();
+            kValue = strList[18].toFloat()*10;
             ui->s5khz->setValue((int)kValue); on_s5khz_sliderMoved((int)kValue);
 
-            kValue = strList[19].toDouble();
+            kValue = strList[19].toFloat()*10;
             ui->s10khz->setValue((int)kValue); on_s10khz_sliderMoved((int)kValue);
 
-            kValue = strList[20].toDouble();
+            kValue = strList[20].toFloat()*10;
             ui->s20khz->setValue((int)kValue); on_s20khz_sliderMoved((int)kValue);
 
             PresetFile.close();
