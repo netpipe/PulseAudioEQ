@@ -277,8 +277,8 @@ void MainWindow::on_preset_currentIndexChanged(int index)
             QString strBuffer = in.readAll();
             QStringList strList = strBuffer.split('\n');
 
-            ui->preamp_slider->setValue(strList[3].toFloat());
-            on_preamp_slider_sliderMoved(strList[3].toFloat());
+            ui->preamp_slider->setValue(strList[3].toFloat()*10);
+            on_preamp_slider_sliderMoved(strList[3].toFloat()*10);
             ui->PresetName->setPlainText(strList[4]);
 
 
