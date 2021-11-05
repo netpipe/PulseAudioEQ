@@ -25,43 +25,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-//    QDirIterator it("./Resource/themes/", QStringList() << "*.qss", QDir::Files, QDirIterator::Subdirectories);
-//    while (it.hasNext()){
-//      //  QFileInfo fileInfo(f.fileName());
-//        ui->cmbTheme->addItem(it.next().toLatin1());
-//    }
-
-
-//    QFile MyFile("themes.txt");
-//    if(MyFile.exists()){
-//        MyFile.open(QIODevice::ReadWrite);
-//        QTextStream in (&MyFile);
-//        QString line;
-//        QStringList list;
-//         //   QList<QString> nums;
-//        QStringList nums;
-//        QRegExp rx("[:]");
-//        line = in.readLine();
-//  QString stylesheet;
-//        if (line.contains(":")) {
-//            list = line.split(rx);
-//                qDebug() << "theme" <<  list.at(1).toLatin1();
-//                stylesheet =  list.at(1).toLatin1();
-//          loadStyleSheet( list.at(1).toLatin1());
-
-//                MyFile.close();
-//        }
-
-//      fileName=stylesheet;
-
-
-        QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
-        while (it.hasNext()){
-          //  QFileInfo fileInfo(f.fileName());
-            ui->preset->addItem(it.next().toLatin1());
-        }
-
-
+    QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()){
+      //  QFileInfo fileInfo(f.fileName());
+        ui->preset->addItem(it.next().toLatin1());
+    }
 }
 
 MainWindow::~MainWindow()
@@ -77,114 +45,185 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-        QFile file("test.txt");
-        file.open(QIODevice::Text | QIODevice::ReadOnly);
-    QFile file2("themes.txt");
-        if(file2.open(QIODevice::ReadWrite | QIODevice::Text))// QIODevice::Append |
-        {
-                QTextStream stream(&file2);
-                file2.seek(0);
-               stream << "theme:" << endl;
-                for (int i = 0; i < 1; i++)
-                {
-                 stream << "theme:" << endl;
-                }
-            //                file.write("\n");
-               file2.close();
-        }
+    WritePresetFile("test.txt");
+}
+
+void MainWindow::WritePresetFile(QString fileName)
+{
+    QString pream_str, presetName_str;
+
+    float kValue = ui->preamp_slider->value();
+    kValue = kValue / 10;
+    pream_str = QString::number(kValue);
+    presetName_str = ui->PresetName->toPlainText();
+
+    QFile file(fileName);
+    file.open(QIODevice::Text | QIODevice::WriteOnly);
+    QTextStream stream(&file);
+    stream << "mbeq_1197" << endl;
+    stream << "mbeq" << endl;
+    stream << "Multiband EQ" << endl;
+    stream << pream_str << endl;
+    stream << presetName_str << endl;
+    stream << "15" << endl;
+    stream << ui->s50hz->value() << endl;
+    stream << ui->s100hz->value() << endl;
+    stream << ui->s156hz->value() << endl;
+    stream << ui->s220hz->value() << endl;
+    stream << ui->s311hz->value() << endl;
+    stream << ui->s440hz->value() << endl;
+    stream << ui->s622hz->value() << endl;
+    stream << ui->s880hz->value() << endl;
+    stream << ui->s125khz->value() << endl;
+    stream << ui->s175khz->value() << endl;
+    stream << ui->s25khz->value() << endl;
+    stream << ui->s35khz->value() << endl;
+    stream << ui->s5khz->value() << endl;
+    stream << ui->s10khz->value() << endl;
+    stream << ui->s20khz->value() << endl;
+    stream << 50 << endl;
+    stream << 100 << endl;
+    stream << 156 << endl;
+    stream << 220 << endl;
+    stream << 311 << endl;
+    stream << 440 << endl;
+    stream << 622 << endl;
+    stream << 880 << endl;
+    stream << 1250 << endl;
+    stream << 1750 << endl;
+    stream << 2500 << endl;
+    stream << 3500 << endl;
+    stream << 5000 << endl;
+    stream << 10000 << endl;
+    stream << 20000 << endl;
+    file.close();
 }
 
 void MainWindow::on_s50hz_sliderMoved(int position)
 {
-    ui->l50hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l50hz->setText(QString::number(k)+" db");
 }
 
 void MainWindow::on_s100hz_sliderMoved(int position)
 {
-    ui->l100hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l100hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s156hz_sliderMoved(int position)
 {
-    ui->l156hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l156hz->setText(QString::number(k)+" db");
 }
 
 void MainWindow::on_s220hz_sliderMoved(int position)
 {
-    ui->l220hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l220hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s311hz_sliderMoved(int position)
 {
-    ui->l311hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l311hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s440hz_sliderMoved(int position)
 {
-    ui->l440hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l440hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s622hz_sliderMoved(int position)
 {
-    ui->l622hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l622hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s880hz_sliderMoved(int position)
 {
-    ui->l880hz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l880hz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s125khz_sliderMoved(int position)
 {
-    ui->l125khz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l125khz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s175khz_sliderMoved(int position)
 {
-    ui->l175khz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l175khz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s25khz_sliderMoved(int position)
 {
-    ui->l25khz->setText(QString::number(position)+" db");
-
+    float k = position;
+    k = k / 10;
+    ui->l25khz->setText(QString::number(k)+" db");
 }
 
 void MainWindow::on_s35khz_sliderMoved(int position)
 {
-    ui->l35khz->setText(QString::number(position)+" db");
-
+    float k = position;
+    k = k / 10;
+    ui->l35khz->setText(QString::number(k)+" db");
 }
 
 void MainWindow::on_s5khz_sliderMoved(int position)
 {
-    ui->l5khz->setText(QString::number(position)+" db");
-
+    float k = position;
+    k = k / 10;
+    ui->l5khz->setText(QString::number(k)+" db");
 }
 
 void MainWindow::on_s10khz_sliderMoved(int position)
 {
-    ui->l10khz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l10khz->setText(QString::number(k)+" db");
 
 }
 
 void MainWindow::on_s20khz_sliderMoved(int position)
 {
-    ui->l20khz->setText(QString::number(position)+" db");
+    float k = position;
+    k = k / 10;
+    ui->l20khz->setText(QString::number(k)+" db");
+}
 
+void MainWindow::on_preamp_slider_sliderMoved(int position)
+{
+    float k = position;
+    k = k / 10;
+    ui->lpreamp->setText(QString::number(k)+" X");
 }
 
 void MainWindow::on_applybtn_clicked()
 {
     //save QDir::homePath()+"/.config/pulse/equalizerrc"
+    WritePresetFile(QDir::homePath()+"/.config/pulse/equalizerrc");
     QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer interface.applysettings");
 }
 
@@ -192,14 +231,13 @@ void MainWindow::on_applybtn_clicked()
 void MainWindow::on_enableBTN_clicked()
 {
     QProcess::execute ("pulseaudio-equalizer enable");
-     QProcess::execute("bash", QStringList() << "pulseaudio-equalizer enable");
+    QProcess::execute("bash", QStringList() << "pulseaudio-equalizer enable");
 }
 
 
 void MainWindow::on_disableBTN_clicked()
 {
     QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer disable");
-
 }
 
 void MainWindow::on_toggleBTN_clicked()
@@ -207,3 +245,96 @@ void MainWindow::on_toggleBTN_clicked()
     QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer toggle");
 
 }
+
+void MainWindow::on_preset_currentIndexChanged(int index)
+{
+    if( index == 0 )
+    {
+        ui->s50hz->setValue(4); on_s50hz_sliderMoved(4);
+        ui->s100hz->setValue(4); on_s100hz_sliderMoved(4);
+        ui->s156hz->setValue(4); on_s156hz_sliderMoved(4);
+        ui->s220hz->setValue(4); on_s220hz_sliderMoved(4);
+        ui->s311hz->setValue(4); on_s311hz_sliderMoved(4);
+        ui->s440hz->setValue(4); on_s440hz_sliderMoved(4);
+        ui->s622hz->setValue(4); on_s622hz_sliderMoved(4);
+        ui->s880hz->setValue(4); on_s880hz_sliderMoved(4);
+        ui->s125khz->setValue(4); on_s125khz_sliderMoved(4);
+        ui->s175khz->setValue(4); on_s175khz_sliderMoved(4);
+        ui->s156hz->setValue(4); on_s156hz_sliderMoved(4);
+        ui->s25khz->setValue(4); on_s25khz_sliderMoved(4);
+        ui->s35khz->setValue(4); on_s35khz_sliderMoved(4);
+        ui->s5khz->setValue(4); on_s5khz_sliderMoved(4);
+        ui->s10khz->setValue(4); on_s10khz_sliderMoved(4);
+        ui->s20khz->setValue(4); on_s20khz_sliderMoved(4);
+        ui->preamp_slider->setValue(20); on_preamp_slider_sliderMoved(20);
+        ui->PresetName->setPlainText("default");
+    }
+    else
+    {
+        QString fileName = ui->preset->itemText(index);
+
+        QFile PresetFile(fileName);
+        if(PresetFile.exists())
+        {
+            PresetFile.open(QIODevice::ReadOnly);
+            QTextStream in (&PresetFile);
+            QString strBuffer = in.readAll();
+            QStringList strList = strBuffer.split('\n');
+
+            ui->preamp_slider->setValue(strList[3].toFloat()*10);
+            on_preamp_slider_sliderMoved(strList[3].toFloat()*10);
+            ui->PresetName->setPlainText(strList[4]);
+
+
+            double kValue = strList[6].toDouble();
+            ui->s50hz->setValue((int)kValue); on_s50hz_sliderMoved((int)kValue);
+
+            kValue = strList[7].toDouble();
+            ui->s100hz->setValue((int)kValue); on_s100hz_sliderMoved((int)kValue);
+
+            kValue = strList[8].toDouble();
+            ui->s156hz->setValue((int)kValue); on_s156hz_sliderMoved((int)kValue);
+
+            kValue = strList[9].toDouble();
+            ui->s220hz->setValue((int)kValue); on_s220hz_sliderMoved((int)kValue);
+
+            kValue = strList[10].toDouble();
+            ui->s311hz->setValue((int)kValue); on_s311hz_sliderMoved((int)kValue);
+
+            kValue = strList[11].toDouble();
+            ui->s440hz->setValue((int)kValue); on_s440hz_sliderMoved((int)kValue);
+
+            kValue = strList[12].toDouble();
+            ui->s622hz->setValue((int)kValue); on_s622hz_sliderMoved((int)kValue);
+
+            kValue = strList[13].toDouble();
+            ui->s880hz->setValue((int)kValue); on_s880hz_sliderMoved((int)kValue);
+
+            kValue = strList[14].toDouble();
+            ui->s125khz->setValue((int)kValue); on_s125khz_sliderMoved((int)kValue);
+
+            kValue = strList[15].toDouble();
+            ui->s175khz->setValue((int)kValue); on_s175khz_sliderMoved((int)kValue);
+
+            kValue = strList[16].toDouble();
+            ui->s25khz->setValue((int)kValue); on_s25khz_sliderMoved((int)kValue);
+
+            kValue = strList[17].toDouble();
+            ui->s35khz->setValue((int)kValue); on_s35khz_sliderMoved((int)kValue);
+
+            kValue = strList[18].toDouble();
+            ui->s5khz->setValue((int)kValue); on_s5khz_sliderMoved((int)kValue);
+
+            kValue = strList[19].toDouble();
+            ui->s10khz->setValue((int)kValue); on_s10khz_sliderMoved((int)kValue);
+
+            kValue = strList[20].toDouble();
+            ui->s20khz->setValue((int)kValue); on_s20khz_sliderMoved((int)kValue);
+
+            PresetFile.close();
+        }
+    }
+
+}
+
+

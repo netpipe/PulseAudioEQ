@@ -15,6 +15,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public:
+    void WritePresetFile(QString fileName);
+
 private slots:
     void on_actionExit_triggered();
 
@@ -57,6 +60,10 @@ private slots:
     void on_disableBTN_clicked();
 
     void on_toggleBTN_clicked();
+
+    void on_preset_currentIndexChanged(int index);
+
+    void on_preamp_slider_sliderMoved(int position);
 
 private:
     Ui::MainWindow *ui;
