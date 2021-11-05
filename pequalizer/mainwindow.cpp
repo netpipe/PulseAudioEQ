@@ -58,18 +58,18 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << QString( ui->s50hz->value() / 10).toFloat() << endl;
     stream << QString(ui->s100hz->value()/ 10).toFloat() << endl;
     stream << QString(ui->s156hz->value()/ 10).toFloat() << endl;
-//    stream <<  (float)ui->s220hz->value()/ 10 << endl;
-//    stream <<  (float)ui->s311hz->value()/ 10 << endl;
-//    stream <<  (float)ui->s440hz->value()/ 10 << endl;
-//    stream <<  (float)ui->s622hz->value()/ 10 << endl;
-//    stream <<  (float)ui->s880hz->value() / 10<< endl;
-//    stream <<  (float)ui->s125khz->value()/ 10 << endl;
-//    stream <<  (float)ui->s175khz->value()/ 10 << endl;
-//    stream <<  (float)ui->s25khz->value()/ 10 << endl;
-//    stream << (float)ui->s35khz->value()/ 10 << endl;
-//    stream <<  (float)ui->s5khz->value() / 10<< endl;
-//    stream <<  (float)ui->s10khz->value()/ 10 << endl;
-//    stream <<  (float)ui->s20khz->value()/ 10 << endl;
+    stream <<  (float)ui->s220hz->value()/ 10 << endl;
+    stream <<  (float)ui->s311hz->value()/ 10 << endl;
+    stream <<  (float)ui->s440hz->value()/ 10 << endl;
+    stream <<  (float)ui->s622hz->value()/ 10 << endl;
+    stream <<  (float)ui->s880hz->value() / 10<< endl;
+    stream <<  (float)ui->s125khz->value()/ 10 << endl;
+    stream <<  (float)ui->s175khz->value()/ 10 << endl;
+    stream <<  (float)ui->s25khz->value()/ 10 << endl;
+    stream << (float)ui->s35khz->value()/ 10 << endl;
+    stream <<  (float)ui->s5khz->value() / 10<< endl;
+    stream <<  (float)ui->s10khz->value()/ 10 << endl;
+    stream <<  (float)ui->s20khz->value()/ 10 << endl;
     stream << 50 << endl;
     stream << 100 << endl;
     stream << 156 << endl;
@@ -271,8 +271,8 @@ void MainWindow::on_preset_currentIndexChanged(int index)
             QString strBuffer = in.readAll();
             QStringList strList = strBuffer.split('\n');
 
-            ui->preamp_slider->setValue(strList[3].toFloat()*10);
-            on_preamp_slider_sliderMoved(strList[3].toFloat()*10);
+            ui->preamp_slider->setValue(strList[3].toFloat());
+            on_preamp_slider_sliderMoved(strList[3].toFloat());
             ui->PresetName->setPlainText(strList[4]);
 
 
