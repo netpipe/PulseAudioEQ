@@ -212,25 +212,25 @@ void MainWindow::on_applybtn_clicked()
 {
     //save QDir::homePath()+"/.config/pulse/equalizerrc"
     WritePresetFile(QDir::homePath()+"/.config/pulse/equalizerrc");
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer interface.applysettings");
+    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer" << "interface.applysettings");
 }
 
 
 void MainWindow::on_enableBTN_clicked()
 {
  //   QProcess::execute ("pulseaudio-equalizer enable");
-    QProcess::execute("bash", QStringList() << "pulseaudio-equalizer enable");
+    QProcess::execute("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "enable");
 }
 
 
 void MainWindow::on_disableBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer disable");
+    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "disable");
 }
 
 void MainWindow::on_toggleBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer toggle");
+    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << "toggle");
 
 }
 
