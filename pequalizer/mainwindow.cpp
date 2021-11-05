@@ -55,9 +55,9 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << pream_str << endl;
     stream << presetName_str << endl;
     stream << "15" << endl;
-    stream << QString( ui->s50hz->value() / 10).toFloat() << endl;
-    stream << QString(ui->s100hz->value()/ 10).toFloat() << endl;
-    stream << QString(ui->s156hz->value()/ 10).toFloat() << endl;
+    stream <<(float) ui->s50hz->value() / 10 << endl;
+    stream << (float)ui->s100hz->value()/ 10 << endl;
+    stream << (float)ui->s156hz->value()/ 10 << endl;
     stream <<  (float)ui->s220hz->value()/ 10 << endl;
     stream <<  (float)ui->s311hz->value()/ 10 << endl;
     stream <<  (float)ui->s440hz->value()/ 10 << endl;
@@ -227,12 +227,12 @@ void MainWindow::on_enableBTN_clicked()
 
 void MainWindow::on_disableBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer" << "disable");
+    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer " << "disable");
 }
 
 void MainWindow::on_toggleBTN_clicked()
 {
-    QProcess::execute ("bash", QStringList() << "pulseaudio-equalizer" << "toggle");
+    QProcess::execute ("bash", QStringList() << "/usr/bin/pulseaudio-equalizer" << " toggle");
 
 }
 
