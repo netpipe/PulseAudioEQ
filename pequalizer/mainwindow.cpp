@@ -8,6 +8,8 @@
 #include <QDirIterator>
 #include <QDebug>
 
+int presetinitial=0;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -19,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
       //  QFileInfo fileInfo(f.fileName());
         ui->preset->addItem(it.next().toLatin1());
     }
+
 }
 
 MainWindow::~MainWindow()
@@ -100,6 +103,8 @@ void MainWindow::on_s50hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l50hz->setText(QString::number(k)+" db");
+    if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s100hz_sliderMoved(int position)
@@ -107,7 +112,8 @@ void MainWindow::on_s100hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l100hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s156hz_sliderMoved(int position)
@@ -115,6 +121,8 @@ void MainWindow::on_s156hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l156hz->setText(QString::number(k)+" db");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s220hz_sliderMoved(int position)
@@ -122,7 +130,8 @@ void MainWindow::on_s220hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l220hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s311hz_sliderMoved(int position)
@@ -130,7 +139,8 @@ void MainWindow::on_s311hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l311hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s440hz_sliderMoved(int position)
@@ -138,7 +148,8 @@ void MainWindow::on_s440hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l440hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s622hz_sliderMoved(int position)
@@ -146,7 +157,8 @@ void MainWindow::on_s622hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l622hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s880hz_sliderMoved(int position)
@@ -154,7 +166,8 @@ void MainWindow::on_s880hz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l880hz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s125khz_sliderMoved(int position)
@@ -162,7 +175,8 @@ void MainWindow::on_s125khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l125khz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s175khz_sliderMoved(int position)
@@ -170,7 +184,8 @@ void MainWindow::on_s175khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l175khz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s25khz_sliderMoved(int position)
@@ -178,6 +193,8 @@ void MainWindow::on_s25khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l25khz->setText(QString::number(k)+" db");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s35khz_sliderMoved(int position)
@@ -185,6 +202,8 @@ void MainWindow::on_s35khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l35khz->setText(QString::number(k)+" db");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s5khz_sliderMoved(int position)
@@ -192,6 +211,8 @@ void MainWindow::on_s5khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l5khz->setText(QString::number(k)+" db");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_s10khz_sliderMoved(int position)
@@ -199,7 +220,8 @@ void MainWindow::on_s10khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l10khz->setText(QString::number(k)+" db");
-
+        if(presetinitial)
+on_applybtn_clicked();
 }
 
 void MainWindow::on_s20khz_sliderMoved(int position)
@@ -207,6 +229,8 @@ void MainWindow::on_s20khz_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->l20khz->setText(QString::number(k)+" db");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_preamp_slider_sliderMoved(int position)
@@ -214,6 +238,8 @@ void MainWindow::on_preamp_slider_sliderMoved(int position)
     float k = position;
     k = k / 10;
     ui->lpreamp->setText(QString::number(k)+" X");
+        if(presetinitial)
+    on_applybtn_clicked();
 }
 
 void MainWindow::on_applybtn_clicked()
@@ -244,6 +270,7 @@ void MainWindow::on_toggleBTN_clicked()
 
 void MainWindow::on_preset_currentIndexChanged(int index)
 {
+        presetinitial=0;
     if( index == 0 )
     {
         ui->s50hz->setValue(4); on_s50hz_sliderMoved(4);
@@ -330,7 +357,13 @@ void MainWindow::on_preset_currentIndexChanged(int index)
             PresetFile.close();
         }
     }
+    presetinitial=1;
 
 }
 
 
+
+void MainWindow::on_s156hz_valueChanged(int value)
+{
+
+}
