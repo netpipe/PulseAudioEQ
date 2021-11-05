@@ -33,7 +33,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-    WritePresetFile("test.txt");
+    WritePresetFile(ui->PresetName->toPlainText().toLatin1());
 }
 
 void MainWindow::WritePresetFile(QString fileName)
