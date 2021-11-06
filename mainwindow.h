@@ -65,8 +65,6 @@ private slots:
 
     void on_preamp_slider_sliderMoved(int position);
 
-    void on_s156hz_valueChanged(int value);
-
 private:
     Ui::MainWindow *ui;
 };

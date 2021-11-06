@@ -164,11 +164,6 @@ void MainWindow::on_s311hz_sliderMoved(int position)
 on_applybtn_clicked();
 }
 
-void MainWindow::on_s156hz_valueChanged(int value)
-{
-
-}
-
 
 void MainWindow::on_s440hz_sliderMoved(int position)
 {
