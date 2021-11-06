@@ -383,6 +383,7 @@ void MainWindow::on_preset_currentIndexChanged(int index)
 
             PresetFile.close();
         }
+      on_applybtn_clicked();
     }
     presetinitial=1;
 
