@@ -115,6 +115,7 @@ void MainWindow::WritePresetFile(QString fileName)
     while (it2.hasNext()){
         ui->preset->addItem(it2.next().toLatin1());
     }
+writeconfig=0;
     }
 }
 
