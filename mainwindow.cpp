@@ -17,10 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()){
-        ui->preset->addItem(it.next().toLatin1());
-    }
+        ui->preset->addItem(QDir::homePath()+"/.config/pulse/equalizerrc");
+
 
     QDirIterator it2("./", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
     while (it2.hasNext()){
@@ -40,7 +38,7 @@ void MainWindow::on_actionExit_triggered()
     QApplication::exit();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked() //writeconfig
 {
     writeconfig=1;
     WritePresetFile(ui->PresetName->toPlainText().toLatin1()+".preset");
@@ -104,12 +102,10 @@ void MainWindow::WritePresetFile(QString fileName)
     qDebug() << fileName.toLatin1() << "wrote";
 
     if (writeconfig){
- presetinitial=0;
- ui->preset->clear();
-    QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()){
-        ui->preset->addItem(it.next().toLatin1());
-    }
+     presetinitial=0;
+     ui->preset->clear();
+  ui->preset->clear();
+    ui->preset->addItem(QDir::homePath()+"/.config/pulse/equalizerrc");
 
     QDirIterator it2("./", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
     while (it2.hasNext()){
