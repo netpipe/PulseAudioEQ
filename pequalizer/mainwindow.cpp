@@ -9,6 +9,7 @@
 #include <QDebug>
 
 int presetinitial=0;
+bool writeconfig=0;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,8 +19,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
     while (it.hasNext()){
-      //  QFileInfo fileInfo(f.fileName());
         ui->preset->addItem(it.next().toLatin1());
+    }
+
+    QDirIterator it2("./", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
+    while (it2.hasNext()){
+        ui->preset->addItem(it2.next().toLatin1());
     }
 
 }
@@ -37,6 +42,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
+    writeconfig=1;
     WritePresetFile(ui->PresetName->toPlainText().toLatin1()+".preset");
 }
 
@@ -96,6 +102,20 @@ void MainWindow::WritePresetFile(QString fileName)
     stream << 20000 << endl;
     file.close();
     qDebug() << fileName.toLatin1() << "wrote";
+
+    if (writeconfig){
+ presetinitial=0;
+ ui->preset->clear();
+    QDirIterator it(QDir::homePath()+"/.config/pulse/presets", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()){
+        ui->preset->addItem(it.next().toLatin1());
+    }
+
+    QDirIterator it2("./", QStringList() << "*.preset", QDir::Files, QDirIterator::Subdirectories);
+    while (it2.hasNext()){
+        ui->preset->addItem(it2.next().toLatin1());
+    }
+    }
 }
 
 void MainWindow::on_s50hz_sliderMoved(int position)
@@ -142,6 +162,12 @@ void MainWindow::on_s311hz_sliderMoved(int position)
         if(presetinitial)
 on_applybtn_clicked();
 }
+
+void MainWindow::on_s156hz_valueChanged(int value)
+{
+
+}
+
 
 void MainWindow::on_s440hz_sliderMoved(int position)
 {
@@ -309,61 +335,54 @@ void MainWindow::on_preset_currentIndexChanged(int index)
             ui->PresetName->setPlainText(strList[4]);
 
 
-            double kValue = strList[6].toFloat()*10;
+            double kValue = strList[10].toFloat()*10;
             ui->s50hz->setValue((int)kValue); on_s50hz_sliderMoved((int)kValue);
 
-            kValue = strList[7].toFloat()*10;
+            kValue = strList[11].toFloat()*10;
             ui->s100hz->setValue((int)kValue); on_s100hz_sliderMoved((int)kValue);
 
-            kValue = strList[8].toFloat()*10;
+            kValue = strList[12].toFloat()*10;
             ui->s156hz->setValue((int)kValue); on_s156hz_sliderMoved((int)kValue);
 
-            kValue = strList[9].toFloat()*10;
+            kValue = strList[13].toFloat()*10;
             ui->s220hz->setValue((int)kValue); on_s220hz_sliderMoved((int)kValue);
 
-            kValue = strList[10].toFloat()*10;
+            kValue = strList[14].toFloat()*10;
             ui->s311hz->setValue((int)kValue); on_s311hz_sliderMoved((int)kValue);
 
-            kValue = strList[11].toFloat()*10;
+            kValue = strList[15].toFloat()*10;
             ui->s440hz->setValue((int)kValue); on_s440hz_sliderMoved((int)kValue);
 
-            kValue = strList[12].toFloat()*10;
+            kValue = strList[16].toFloat()*10;
             ui->s622hz->setValue((int)kValue); on_s622hz_sliderMoved((int)kValue);
 
-            kValue = strList[13].toFloat()*10;
+            kValue = strList[17].toFloat()*10;
             ui->s880hz->setValue((int)kValue); on_s880hz_sliderMoved((int)kValue);
 
-            kValue = strList[14].toFloat()*10;
+            kValue = strList[18].toFloat()*10;
             ui->s125khz->setValue((int)kValue); on_s125khz_sliderMoved((int)kValue);
 
-            kValue = strList[15].toFloat()*10;
+            kValue = strList[19].toFloat()*10;
             ui->s175khz->setValue((int)kValue); on_s175khz_sliderMoved((int)kValue);
 
-            kValue = strList[16].toFloat()*10;
+            kValue = strList[20].toFloat()*10;
             ui->s25khz->setValue((int)kValue); on_s25khz_sliderMoved((int)kValue);
 
-            kValue = strList[17].toFloat()*10;
+            kValue = strList[21].toFloat()*10;
             ui->s35khz->setValue((int)kValue); on_s35khz_sliderMoved((int)kValue);
 
-            kValue = strList[18].toFloat()*10;
+            kValue = strList[22].toFloat()*10;
             ui->s5khz->setValue((int)kValue); on_s5khz_sliderMoved((int)kValue);
 
-            kValue = strList[19].toFloat()*10;
+            kValue = strList[23].toFloat()*10;
             ui->s10khz->setValue((int)kValue); on_s10khz_sliderMoved((int)kValue);
 
-            kValue = strList[20].toFloat()*10;
+            kValue = strList[24].toFloat()*10;
             ui->s20khz->setValue((int)kValue); on_s20khz_sliderMoved((int)kValue);
 
             PresetFile.close();
         }
     }
     presetinitial=1;
-
-}
-
-
-
-void MainWindow::on_s156hz_valueChanged(int value)
-{
 
 }
